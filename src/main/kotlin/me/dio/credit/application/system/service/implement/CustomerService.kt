@@ -19,5 +19,4 @@ class CustomerService(
 
     override fun delete(id: Long) =
         this.customerRepo.deleteById(id)
-
 }
