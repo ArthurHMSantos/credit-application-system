@@ -1,5 +1,6 @@
 package me.dio.credit.application.system.controller
 
+import jakarta.validation.Valid
 import me.dio.credit.application.system.dto.CustomerDTO
 import me.dio.credit.application.system.dto.CustomerUpdateDto
 import me.dio.credit.application.system.dto.CustomerView
@@ -18,13 +19,13 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/api/customer")
+@RequestMapping("/api/tb_customer")
 class CustomerController(
     private val customerService: CustomerService
 ) {
 
     @PostMapping
-    fun registerCustomer(@RequestBody customerDTO: CustomerDTO): ResponseEntity<String> {
+    fun registerCustomer(@RequestBody @Valid customerDTO: CustomerDTO): ResponseEntity<String> {
         val registeredCustomer = this.customerService.register(customerDTO.toEntity())
         return ResponseEntity.status(HttpStatus.CREATED)
             .body("Customer ${registeredCustomer.firstName} ${registeredCustomer.lastName} registered successfully!")
@@ -44,7 +45,7 @@ class CustomerController(
     @PatchMapping
     fun updateCustomer(
         @RequestParam(value = "customerId") id: Long,
-        @RequestBody customerUpdateDto: CustomerUpdateDto
+        @RequestBody @Valid customerUpdateDto: CustomerUpdateDto
     ): ResponseEntity<CustomerView> {
         val customer: Customer = this.customerService.findById(id)
         val customerToUpdate = customerUpdateDto.toEntity(customer)

@@ -1,5 +1,6 @@
 package me.dio.credit.application.system.controller
 
+import jakarta.validation.Valid
 import me.dio.credit.application.system.dto.CreditDto
 import me.dio.credit.application.system.dto.CreditView
 import me.dio.credit.application.system.dto.CreditViewList
@@ -20,20 +21,23 @@ import java.util.UUID
 import java.util.stream.Collectors
 
 @RestController
-@RequestMapping("/api/credits")
+@RequestMapping("api/tb_credit")
 class CreditController (
     private val creditService: CreditService
 ){
     @PostMapping
-    fun registerCredit(@RequestBody creditDto : CreditDto): ResponseEntity<String> {
+    fun registerCredit(@RequestBody @Valid creditDto : CreditDto): ResponseEntity<String> {
         val credit: Credit = this.creditService.register(creditDto.toEntity())
         return ResponseEntity.status(HttpStatus.CREATED).body("Credit ${credit.creditValue} added successfully: ${credit.customer?.firstName}!!!")
     }
 
+    // for some reason I1 cant explain this doesn't work >:(
     @GetMapping
-    fun findAllByCustomerId(@RequestParam(value = "customerId") customerId: Long): ResponseEntity<List<CreditViewList>> {
+    fun findAllByCustomerId(@RequestParam(value = "customerId") customerId: Long):
+            ResponseEntity<List<CreditViewList>> {
         val creditViewList: List<CreditViewList> = this.creditService.findAllByCustomer(customerId)
-            .stream().map { credit: Credit -> CreditViewList(credit) }
+            .stream()
+            .map { credit: Credit -> CreditViewList(credit) }
             .collect(Collectors.toList())
         return ResponseEntity.status(HttpStatus.OK).body(creditViewList)
     }

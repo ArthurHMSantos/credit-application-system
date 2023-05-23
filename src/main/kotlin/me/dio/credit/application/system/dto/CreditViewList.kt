@@ -4,13 +4,14 @@ import me.dio.credit.application.system.entities.Credit
 import java.math.BigDecimal
 import java.util.UUID
 
-data class CreditViewList (
-    val creditcode: UUID,
+data class CreditViewList(
+    val creditCode: UUID,
     val creditValue: BigDecimal,
-    val numberOfInstallments: Int,)
-{
+    val numberOfInstallments: Int
+) {
     constructor(credit: Credit) : this(
-        creditcode = credit.creditCode,
+        creditCode = credit.creditCode,
         creditValue = credit.creditValue,
-        numberOfInstallments = credit.numberOfInstallments)
+        numberOfInstallments = credit.numberOfInstallments
+    )
 }
