@@ -1,18 +1,19 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:credit_app_request_system_db
-    # password: 1234
+    url: jdbc:h2:mem:credit_application_system_db
     username: solas
+    password:
   jpa:
     show-sql: true
     properties:
-      hibernate:
-        format_sql: true
-
+      hibernate.format_sql: true
   h2:
     console:
       enabled: true
       path: /h2-console
       settings:
-        trace: true
+        trace: false
         web-allow-others: false
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

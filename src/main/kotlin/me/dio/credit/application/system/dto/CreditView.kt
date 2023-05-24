@@ -1,23 +1,24 @@
 package me.dio.credit.application.system.dto
 
-import me.dio.credit.application.system.ennumeration.Status
 import me.dio.credit.application.system.entities.Credit
+import me.dio.credit.application.system.enummeration.Status
 import java.math.BigDecimal
 import java.util.*
 
-data class CreditView (
+data class CreditView(
     val creditCode: UUID,
     val creditValue: BigDecimal,
-    val numberOfInstallments: Int,
+    val numberOfInstallment: Int,
     val status: Status,
-    val emailCustomer: String,
-    val incomeCustomer: BigDecimal,
+    val emailCustomer: String?,
+    val incomeCustomer: BigDecimal?
 ) {
     constructor(credit: Credit) : this(
         creditCode = credit.creditCode,
         creditValue = credit.creditValue,
-        numberOfInstallments = credit.numberOfInstallments,
+        numberOfInstallment = credit.numberOfInstallments,
         status = credit.status,
-        emailCustomer = credit.customer?.email!!,
-        incomeCustomer = credit.customer?.income!!)
+        emailCustomer = credit.customer?.email,
+        incomeCustomer = credit.customer?.income
+    )
 }

@@ -8,4 +8,4 @@ data class ExceptionDetails(
     val status: Int,
     val exception: String,
     val details: MutableMap<String, String?>
-) {}
+)
