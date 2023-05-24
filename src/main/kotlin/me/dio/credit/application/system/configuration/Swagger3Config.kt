@@ -9,7 +9,7 @@ class Swagger3Config {
     @Bean
     fun publicApi(): GroupedOpenApi? {
         return GroupedOpenApi.builder()
-            .group("springCreditApplicationSystem-public")
+            .group("springcreditapplicationSsystem-public")
             .pathsToMatch("/api/customers/**", "/api/credits/**")
             .build()
     }
