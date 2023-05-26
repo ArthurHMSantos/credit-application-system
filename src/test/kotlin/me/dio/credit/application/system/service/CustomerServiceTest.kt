@@ -83,7 +83,7 @@ class CustomerServiceTest {
     fun buildCustomer(
         firstName: String = "Arthur",
         lastName: String = "Santos",
-        cpf: String = "115088819962",
+        cpf: String = "11508819962",
         email: String = "arthur@gmail.com",
         password: String = "123456",
         zipCode: String = "297",
