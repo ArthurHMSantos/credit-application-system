@@ -5,7 +5,7 @@ import me.dio.credit.application.system.dto.CreditDto
 import me.dio.credit.application.system.dto.CreditView
 import me.dio.credit.application.system.dto.CreditViewList
 import me.dio.credit.application.system.entities.Credit
-import me.dio.credit.application.system.service.impl.CreditService
+import me.dio.credit.application.system.service.implementation.CreditService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*

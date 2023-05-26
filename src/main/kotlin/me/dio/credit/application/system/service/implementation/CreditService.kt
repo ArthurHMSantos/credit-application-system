@@ -1,10 +1,9 @@
-package me.dio.credit.application.system.service.impl
+package me.dio.credit.application.system.service.implementation
 
 import me.dio.credit.application.system.entities.Credit
 import me.dio.credit.application.system.exception.BusinessException
 import me.dio.credit.application.system.repository.CreditRepository
 import me.dio.credit.application.system.service.ICreditService
-import me.dio.credit.application.system.service.implement.CustomerService
 import org.springframework.stereotype.Service
 import java.lang.IllegalArgumentException
 import java.time.LocalDate
@@ -16,7 +15,7 @@ class CreditService(
     private val customerService: CustomerService
 ) : ICreditService {
     override fun save(credit: Credit): Credit {
-        this.validDayFirstInstallment(credit.dayFirstInstallment)
+        this.validDayFirstInstallment(credit.dayFirstOfInstallment)
         credit.apply {
             customer = customerService.findById(credit.customer?.id!!)
         }
@@ -31,11 +30,6 @@ class CreditService(
             ?: throw BusinessException("Creditcode $creditCode not found"))
         return if (credit.customer?.id == customerId) credit
         else throw IllegalArgumentException("Contact admin")
-        /*if (credit.customer?.id == customerId) {
-          return credit
-        } else {
-          throw RuntimeException("Contact admin")
-        }*/
     }
 
     private fun validDayFirstInstallment(dayFirstInstallment: LocalDate): Boolean {

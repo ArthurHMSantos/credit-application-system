@@ -20,7 +20,7 @@ data class CreditDto(
 
     fun toEntity(): Credit = Credit(
         creditValue = this.creditValue,
-        dayFirstInstallment = this.dayFirstOfInstallment,
+        dayFirstOfInstallment = this.dayFirstOfInstallment,
         numberOfInstallments = this.numberOfInstallments,
         customer = Customer(id = this.customerId)
     )
