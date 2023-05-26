@@ -3,6 +3,7 @@ package me.dio.credit.application.system.repository
 import me.dio.credit.application.system.entities.Address
 import me.dio.credit.application.system.entities.Credit
 import me.dio.credit.application.system.entities.Customer
+
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -74,15 +75,14 @@ class CreditRepositoryTest {
         customer = customer
     )
     private fun buildCustomer(
-        firstName: String = "Arthur",
-        lastName: String = "Santos",
-        cpf: String = "115088819962",
-        email: String = "arthur@gmail.com",
-        password: String = "123456",
-        zipCode: String = "297",
-        street: String = "Rua Manoel Graciliano de Souza",
+        firstName: String = "Cami",
+        lastName: String = "Cavalcante",
+        cpf: String = "28475934625",
+        email: String = "camila@gmail.com",
+        password: String = "12345",
+        zipCode: String = "12345",
+        street: String = "Rua da Cami",
         income: BigDecimal = BigDecimal.valueOf(1000.0),
-        id: Long = 1L
     ) = Customer(
         firstName = firstName,
         lastName = lastName,
